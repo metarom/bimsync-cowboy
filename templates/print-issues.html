@@ -15,10 +15,11 @@
         <form method="post" action="{{url_for('download')}}">
           
             <div class="col-md-6 mx-auto text-center">
-                <label for="name" class="form-label fw-bold fs-5">Your authentication code was {{code}} <br>
+                <label for="name" class="form-label fw-bold fs-5">Your authentication code was: {{code}} <br>
                   A new json file is created from Bimsync issueboard: Prosjektering
                   <!--<br> and your access_token token is {{access_token}}</label>-->
                 <!-- <p class="lead mb-2">Could you please tell me your name?</p> -->
+                <br>
                 <br>
                 <button type="submit" name="button_pop" value="download" class="btn btn-primary btn-lg px-4 gap-3">Download</button>
             </div>

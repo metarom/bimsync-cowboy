@@ -4,6 +4,7 @@ import json
 import webbrowser
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, Response, send_file, jsonify
+from pathlib import Path
 
 app = Flask(__name__)
 
@@ -70,7 +71,8 @@ def bimsync_retriever():
 
                 response = requests.request("GET", url, headers=headers, data=payload)
 
-                with open('BCF_VTM_Issueboard_Prosjektering.json', 'w') as json_file:
+                
+                with Path("BCF_VTM_Issueboard_Prosjektering.json").open("w", encoding="UTF-8") as json_file: 
                     json.dump(response.json(), json_file)
                                
                 print('Request for hello page received with name=%s' % code)
@@ -88,12 +90,6 @@ def bimsync_retriever():
 def download():
     file = "BCF_VTM_Issueboard_Prosjektering.json"
     return send_file(file,as_attachment=True)
-
-
-# @app.route('/uploads/<path:BCF_VTM_Issueboard_Prosjektering>', methods=['GET', 'POST'])
-# def download(filename):
-#     uploads = os.path.join(app.root_path, app.config['UPLOAD_FOLDER'])
-#     return send_from_directory(directory=uploads, filename=filename)
 
 
 if __name__ == '__main__':
