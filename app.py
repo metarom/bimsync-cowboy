@@ -19,15 +19,11 @@ version_id = 2.1
 
 def oven():
 
-  refresh_token = "KcIkW7VI4skwyaxOISUcOF" #if app stops change this to a fresh token
-
-  #x = 1
-
-  #while x == 1:
+  refresh_token = "RQuhPlsxyezlrlO6ogKrAB" #if app stops change this to a fresh token
 
   while True:
 
-    print('Tick! The time is: %s' % datetime.now())
+    #print('Tick! The time is: %s' % datetime.now())
 
     url = f"https://api.bimsync.com/oauth2/token?grant_type=refresh_token&refresh_token={refresh_token}&client_id=4mqUB2ciGTlCSPd&client_secret=9DgfCIF68tr3DIm&redirect_uri=http://127.0.0.1"
 
@@ -38,12 +34,10 @@ def oven():
 
     fresh_tokens = requests.request("POST", url, headers=headers, data=payload)
 
-    print(fresh_tokens.json())
+    #print(fresh_tokens.json())
 
     with Path("tokens.json").open("w", encoding="UTF-8") as tokens_json_file: 
          json.dump(fresh_tokens.json(), tokens_json_file)
-
-    #x = 2
 
     with open('tokens.json') as f:
         refresh_token = json.load(f)["refresh_token"]
