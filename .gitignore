@@ -8,6 +8,7 @@ __pycache__/
 
 # Output files
 BCF_VTM_Issueboard_Prosjektering.json
+tokens.json
 
 # Distribution / packaging
 .Python
